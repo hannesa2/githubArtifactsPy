@@ -1,32 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Item Management System</title>
+    <title>Files Management System</title>
 </head>
 <body>
-    <h1>Item Management System</h1>
+    <h1>Files Management System</h1>
     <form action="/create" method="post">
-        <input type="text" name="name" placeholder="Enter item name" required>
+        <input type="text" name="name" placeholder="Enter file name" required>
         <input type="submit" value="Create">
     </form>
-    <h2>Items:</h2>
+    <h2>Files:</h2>
     <ul>
         {% for item in items %}
             <li>{{ item }}</li>
         {% endfor %}
     </ul>
     <hr>
-    <h2>Update Item:</h2>
+    <h2>Update File:</h2>
     <form action="/update" method="post">
         <input type="text" name="old_name" placeholder="Old name" required>
         <input type="text" name="new_name" placeholder="New name" required>
         <input type="submit" value="Update">
     </form>
     <hr>
-    <h2>Delete Item:</h2>
+    <h2>Delete File:</h2>
     <form action="/delete" method="post">
-        <input type="text" name="name" placeholder="Item name" required>
+        <input type="text" name="name" placeholder="File name" required>
         <input type="submit" value="Delete">
+    </form>
+    <hr>
+    <h2>Get File:</h2>
+    <form action="/get" method="get">
+        <input type="text" name="name" placeholder="File name" required>
+        <input type="submit" value="Get">
     </form>
 </body>
 </html>
