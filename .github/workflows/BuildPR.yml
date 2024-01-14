@@ -42,12 +42,14 @@ jobs:
           pip install ruff
           ruff --output-format=github .
         continue-on-error: false
-      - name: build
+      - name: run
         run: |
           source venv/bin/activate
           timeout 5s python3 main.py || if [[ $? == 124 ]]; then
                 echo "Ok: Authentication timed out after 5s!"
                 exit 0
             else
+                returnCode=$?
                 echo "Error: return code is $?"
+                exit $returnCode
             fi
