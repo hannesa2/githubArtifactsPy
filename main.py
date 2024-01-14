@@ -5,15 +5,13 @@ from werkzeug.utils import secure_filename
 
 app = Flask(__name__, template_folder='templates')
 
-items = []  # This list will store the items
 UPLOAD_FOLDER = "files"
 ALLOWED_EXTENSIONS = {'txt', 'png', 'jpg', 'jpeg', 'gif'}
 
 
 @app.route('/')
 def index():
-    items = os.listdir(UPLOAD_FOLDER)
-    return render_template('index.html', items=items)
+    return render_template('index.html', items=os.listdir(UPLOAD_FOLDER))
 
 
 @app.route('/', methods=['GET', 'POST'])
