@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, flash, url_for, send_from_directory
 import os
+import yaml
 
 from werkzeug.utils import secure_filename
 
@@ -7,6 +8,12 @@ app = Flask(__name__, template_folder='templates')
 
 UPLOAD_FOLDER = "files"
 ALLOWED_EXTENSIONS = {'txt', 'png', 'jpg', 'jpeg', 'gif'}
+
+if os.path.isfile('parameter.yml'):
+    with open('parameter.yml', 'r') as file:
+        prime_service = yaml.safe_load(file)
+        if __name__ == '__main__':
+            UPLOAD_FOLDER = prime_service['file']['directory']
 
 
 @app.route('/')

@@ -2,6 +2,10 @@
 
 It's used to store screenshots in github pull requests
 
+## Configure
+
+Use a `parameter.yml`there is sample included
+
 ## Usage
 
 http://127.0.0.1:5000
