@@ -97,6 +97,6 @@ if __name__ == '__main__':
 
     app.secret_key = 'super secret key'
     app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-    app.config['MAX_CONTENT_LENGTH'] = 200024
+    app.config['MAX_CONTENT_LENGTH'] = 6000024
     items = os.listdir(UPLOAD_FOLDER)
     app.run(debug=True)
