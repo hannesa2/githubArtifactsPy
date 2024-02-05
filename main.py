@@ -40,7 +40,16 @@ def upload_file():
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            return redirect(url_for('download_file', name=filename))
+
+            sub_url = ""
+            if os.path.isfile('parameter.yml'):
+                with open('parameter.yml', 'r') as file:
+                    prime_service = yaml.safe_load(file)
+                    if __name__ == '__main__':
+                        sub_url = prime_service['server']['sub_url']
+            print("sub_url=", sub_url)
+
+            return redirect(sub_url + url_for('download_file', name=filename))
     return ''
 
 
@@ -99,4 +108,4 @@ if __name__ == '__main__':
     app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
     app.config['MAX_CONTENT_LENGTH'] = 6000024
     items = os.listdir(UPLOAD_FOLDER)
-    app.run(host="0.0.0.0",debug=True,port=5000)
+    app.run(host="0.0.0.0", debug=True, port=5000)
