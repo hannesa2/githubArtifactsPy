@@ -99,4 +99,4 @@ if __name__ == '__main__':
     app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
     app.config['MAX_CONTENT_LENGTH'] = 6000024
     items = os.listdir(UPLOAD_FOLDER)
-    app.run(debug=True)
+    app.run(host="0.0.0.0",debug=True,port=5000)
